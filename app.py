@@ -32,7 +32,8 @@ def index():
             results = model.predict(
                 source=input_path,
                 conf=0.25,
-                device="cpu"
+                device="cpu",
+                imgsz=640
             )
 
             result = results[0]
