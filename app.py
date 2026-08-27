@@ -6,7 +6,7 @@ import uuid
 
 app = Flask(__name__)
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "best.pt")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "best.onnx")
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "uploads")
 RESULT_FOLDER = os.path.join(os.path.dirname(__file__), "results")
 
