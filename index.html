@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AquaSentinel AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #07141f;
+            color: white;
+        }
+
+        header {
+            padding: 22px;
+            text-align: center;
+            background: #0b2233;
+            border-bottom: 1px solid #1b526b;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            color: #8bd8f5;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: #0d2535;
+            padding: 30px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            border: 1px solid #1c5268;
+        }
+
+        input[type=file] {
+            width: 100%;
+            padding: 15px;
+            background: #07141f;
+            color: white;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #00a6d6;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .result {
+            text-align: center;
+        }
+
+        .result img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .status {
+            font-size: 25px;
+            font-weight: bold;
+            margin: 15px;
+        }
+
+        .confidence {
+            font-size: 20px;
+            color: #8bd8f5;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .feature {
+            background: #07141f;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        @media(max-width:600px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌊 AquaSentinel AI</h1>
+    <p>AI-Powered Sonar Human Detection System</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>🔍 Sonar Image Detection</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <input
+                type="file"
+                name="image"
+                accept="image/*"
+                required
+            >
+
+            <button type="submit">
+                🚀 ANALYZE SONAR IMAGE
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if detection %}
+
+    <div class="card result">
+
+        <h2>📊 Detection Result</h2>
+
+        <div class="status">
+            {% if detection == "Human" %}
+                🚨 HUMAN DETECTED
+            {% else %}
+                ✅ NO HUMAN DETECTED
+            {% endif %}
+        </div>
+
+        <div class="confidence">
+            Confidence: {{ confidence }}%
+        </div>
+
+        {% if result_image %}
+            <img src="{{ result_image }}">
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+    <div class="features">
+
+        <div class="feature">
+            🎯
+            <h3>AI Detection</h3>
+            <p>YOLO-based sonar analysis</p>
+        </div>
+
+        <div class="feature">
+            👤
+            <h3>Human Detection</h3>
+            <p>Detects human objects</p>
+        </div>
+
+        <div class="feature">
+            🌊
+            <h3>Underwater Safety</h3>
+            <p>AquaSentinel monitoring</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
